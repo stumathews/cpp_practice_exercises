@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "https://www.w3.org/TR/html4/loose.dtd">  
+<html > 
+<head>  <title></title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (https://www.cse.ohio-state.edu/~gurari/TeX4ht/)"> 
+<meta name="originator" content="TeX4ht (https://www.cse.ohio-state.edu/~gurari/TeX4ht/)"> 
+<!-- html --> 
+<meta name="src" content="lab01.tex"> 
+<meta name="date" content="2008-01-22 01:32:00"> 
+<link rel="stylesheet" type="text/css" href="lab01.css"> 
+</head><body 
+>
+   <div class="maketitle">
+
+<span 
+class="cmr-17x-x-120">Programming in C++</span><br /><br />
+<span 
+class="cmr-17x-x-120">Exercise Sheet 1</span>
+</div>
+<!--l. 17--><p class="indent" >   
+The purpose of this lab is to get familiarised with creating simple programs and projects in C++.
+<!--
+The practical work for this course will be done on the University&#8217;s Unix systems. We&#8217;ll be
+using the GNU C++ compiler (g++) and a text editor.
+
+The best editor in the universe is Emacs. If that's not available it
+doesn't really matter what one uses (Notepad++, Wordpad, pen&amp;paper,
+...)
+-->
+      <ol  class="enumerate1" >
+      <li 
+  class="enumerate" id="x1-3x1">
+
+<!--
+Create a new directory for this session&#8217;s exercises. In that directory, copy the file
+-->
+Get the file
+      <a
+href="https://staff.city.ac.uk/c.kloukinas/cpp/src/lab01/hello.cc"><span 
+class="cmtt-12">hello.cc </span></a>containing the &#8220;hello world&#8221; program from the lecture. (Our C++ source
+      files will always end in &#8220;<span 
+class="cmtt-12">.cc</span>&#8221;; other systems use different conventions.)
+<p>
+Now copy-paste it into a new project, compile it, and execute it.
+
+<!--
+Now, type (copy-paste actually, to ensure there are no typos!) the following:
+<table class="verbatim"><tr class="verbatim"><td class="verbatim">
+<div class="verbatim">
+      &#x00A0;&#x00A0;&#x00A0;&#x00A0;export CXXFLAGS='-std=c++14 -pedantic -Wall -Wpointer-arith -Wwrite-strings -Wcast-qual -Wcast-align -Wformat-security -Wformat-nonliteral -Wmissing-format-attribute -Winline -funsigned-char' 
+<br>
+      &#x00A0;&#x00A0;&#x00A0;&#x00A0;echo "export CXXFLAGS='-std=c++14 -pedantic -Wall -Wpointer-arith -Wwrite-strings -Wcast-qual -Wcast-align -Wformat-security -Wformat-nonliteral -Wmissing-format-attribute -Winline -funsigned-char'" >> ~/.bashrc
+</div>
+</td></tr></table>
+< !--
+(A Mac complaining about add0.cc ? Replace -std=c++11 with -std=c++14 above).
+-- >
+
+	<p><em><strong>Note</strong>: the first line defines CXXFLAGS
+(flags to pass to the compiler) for the current terminal session,
+while the second one stores these settings inside your terminal
+initialisation file (called "~/.bashrc"), so that you don't have to type them again.
+
+</em>
+
+      </li>
+      <li 
+  class="enumerate" id="x1-5x2">Compile the program with the command
+
+      <table 
+class="verbatim"><tr class="verbatim"><td 
+class="verbatim"><div class="verbatim">
+      &#x00A0;&#x00A0;&#x00A0;&#x00A0;make&#x00A0;hello
+</div>
+      </td></tr></table>
+      <p class="nopar" >This will create an executable file called <span 
+class="cmtt-12">hello</span>, which you can run by typing
+
+      <table 
+class="verbatim"><tr class="verbatim"><td 
+class="verbatim"><div class="verbatim">
+      &#x00A0;&#x00A0;&#x00A0;&#x00A0;./hello
+</div>
+      </td></tr></table>
+      <p class="nopar" >
+      <p class="noindent" >If you make any changes, you&#8217;ll need to type &#8220;<span 
+class="cmtt-12">make hello</span>&#8221; again before running the new
+      version.
+      </li>
+-->
+
+	<li>
+	Download this program
+	<a
+href="https://staff.city.ac.uk/c.kloukinas/cpp/src/lab01/add0.cc">add0.cc</a>
+
+	<ol>
+	<li> Try compiling it. Change it just enough that it compiles
+without errors first.
+	<br> There should be *loads* of them - if only a few, you
+haven't done the "export CXXFLAGS ..." step at the top of the page!
+
+	<li> Now, write the code inside add_by_1 that adds a and b by
+incrementing a by one b times.
+
+	<li> Is your code correct? Which values should you try to test
+it?
+
+	<li> Is your code well-designed? Can you re-structure it to
+improve it? (avoid almost duplicate code, avoid doing exactly the same
+thing many times when doing it once would have been enough, etc.)
+
+	<li> Can you implement a function mult(a, b) that takes two integers and
+returns their product, which it computes using add_by_1? So mult(4, 3)
+should end up calling add_by_1 2 times (since 4 * 3 = 4 + 4 + 4).
+	</ol>
+	</li>
+
+      <li 
+
+  class="enumerate" id="x1-7x3">Do the same with the <a
+href="https://staff.city.ac.uk/c.kloukinas/cpp/src/lab01/words.cc">words.cc</a> program. To run it reading input from a
+      file, say
+
+      <table 
+class="verbatim"><tr class="verbatim"><td 
+class="verbatim"><div class="verbatim">
+      &#x00A0;&#x00A0;&#x00A0;&#x00A0;./words&#x00A0;&#x003C;file
+</div>
+      </td></tr></table>
+      <!--l. 53--><p class="nopar" >where <span 
+class="cmti-12">file </span>is some text file; <span 
+class="cmtt-12">words.cc </span>itself will do.
+      </li>
+      <li 
+  class="enumerate" id="x1-9x4">Now alter the words program to just print the count of words in the input (followed by a
+      newline).
+      </li>
+      <li 
+  class="enumerate" id="x1-11x5">Write a program using <span 
+class="cmtt-12">getline </span>from the lectures to count the number of lines in the
+      input.
+      </li>
+      <li 
+  class="enumerate" id="x1-13x6">Make a copy of that program, and modify the copy to print out the longest line of the
+      input.
+      </li>
+      <li 
+  class="enumerate" id="x1-15x7">Make a copy of that program, and modify the copy to store the lines of the input in a
+      <span 
+class="cmtt-12">vector</span>, and then print them out in reverse order.
+      </li></ol>
+    
+</body></html> 
+
+
+
