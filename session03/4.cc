@@ -139,7 +139,10 @@ void julian_to_date(const long jd, int &d, int &m, int &y) {
 	assert(date_to_julian(d, m, y) == jd);
 }
 
-ostream& operator<<(ostream& arg1, const Date &date){
+long Date::to_julian() const { return julian_day; }
+
+ostream& operator<<(ostream& arg1, const Date &date)
+{
 	arg1  << date.year() << "."<< date.month() << "." << date.day() << endl;
 	return arg1;
 }
@@ -149,7 +152,7 @@ long Date::operator-(const Date &other)
 	return julian_day - other.julian_day;
 }
 
-long Date::to_julian() const { return julian_day; }
+/* Two overloaded  + operators: */
 
 Date Date::operator+(int add_by_days)
 {
@@ -160,23 +163,23 @@ Date operator+(const int &add_by_days, Date &date)
 {
 	return date + add_by_days;
 }
+
 int main(int argc, char** argv)
 {
-	Date birthday(26,1,2021);
-	Date christmas(25,12,2020);
 	Date today;
+	int next_year = today.year() + 1;
+	Date birthday(26, 1, next_year);
+	Date christmas(25, 12, today.year());
 
 	cout << "Today is " << today << endl;
-	cout << christmas - today << " days until christmas 2020"<< endl;
-	cout << "tomorrow's date will be " << today + 1 << endl;
-	cout << "in 28 days time the date will be " << today + 28 << endl;
+	cout << christmas - today << " days until christmas 2020" << endl;
+	cout << "a) tomorrow's date will be " << today + 1 << endl;
+	cout << "b) in 28 days time the date will be " << today + 28 << endl;
 	auto today_in_julian = today.to_julian(); 
-	cout << "today from julian days is: " << Date(today_in_julian) << endl;
-	cout << "Today is " << today << endl;
 	auto double_age_date = today_in_julian * 2;
-	cout << "The day you'll be twice as old as you are now " << double_age_date  << endl;
-	cout << "day before jan 1 is:" << Date(Date(1,1,2020)-1) << endl;
-	cout << " The day after 2 Sep 1752," << Date(Date(2,9,1752)+1) << endl;
+	cout << "c) The day you'll be twice as old as you are now " << double_age_date  << endl;
+	cout << "d) day before jan 1 is:" << Date(Date(1,1,today.year())-1) << endl;
+	cout << "e) The day after 2 Sep 1752 will be" << Date(Date(2,9,1752)+1) << endl;
 	return 0;
 }
 

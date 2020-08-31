@@ -134,11 +134,13 @@ void julian_to_date(const long jd, int &d, int &m, int &y) {
 	assert(date_to_julian(d, m, y) == jd);
 }
 
-ostream& operator<<(ostream& arg1, const Date &date){
+ostream& operator<<(ostream& arg1, const Date &date)
+{
 	arg1  << date.year() << "."<< date.month() << "." << date.day() << endl;
 	return arg1;
 }
 
+// as a member function
 long Date::operator-(const Date &other)
 {
 	return julian_day - other.julian_day;

@@ -131,14 +131,13 @@ void julian_to_date(const long jd, int &d, int &m, int &y) {
 	assert(date_to_julian(d, m, y) == jd);
 }
 
+// Position C: GOOD! operator<< is an independent function!
 ostream& operator<<(ostream& arg1, const Date &date){
 	arg1  << date.year() << "."<< date.month() << "." << date.day() << endl;
 	return arg1;
 }
-// Position C: GOOD! operator<< is an independent function!
 
 // Position D: main should be here so that it knows of Date and op<<
-
 int main(int argc, char** argv)
 {
 	Date today_date(26,1,1987);

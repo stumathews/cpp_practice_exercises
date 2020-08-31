@@ -175,12 +175,13 @@ bool operator<(const Date& d1, const Date &d2)
 
 int main(int argc, char** argv)
 {
-	Date birthday(26,1,2021);
-	Date christmas(25,12,2020);
 	Date today;
+	auto next_year = today.year()+1;
+	Date birthday(26,1, next_year);
+	Date christmas(25,12,today.year());
 
 	cout << "Today is " << today << endl;
-	cout << christmas - today << " days until christmas 2020"<< endl;
+	cout << christmas - today << " days until christmas " << today.year() << endl;
 	cout << "tomorrow's date will be " << today + 1 << endl;
 	cout << "in 28 days time the date will be " << today + 28 << endl;
 	auto today_in_julian = today.to_julian(); 
@@ -188,9 +189,9 @@ int main(int argc, char** argv)
 	cout << "Today is " << today << endl;
 	auto double_age_date = today_in_julian * 2;
 	cout << "The day you'll be twice as old as you are now " << double_age_date  << endl;
-	cout << "day before jan 1 is:" << Date(Date(1,1,2020)-1) << endl;
-	cout << " The day after 2 Sep 1752," << Date(Date(2,9,1752)+1) << endl;
-	auto end_of_year = Date(31,12,2020).to_julian();
+	cout << "day before jan 1 is:" << Date(Date(1,1, today.year())-1) << endl;
+	cout << " The day after 2 Sep 1752: " << Date(Date(2,9,1752)+1) << endl;
+	auto end_of_year = Date(31,12,today.year()).to_julian();
 	for(int td = today_in_julian; td <= end_of_year;td++)
 	       cout << Date(td) << endl;	
 	return 0;
