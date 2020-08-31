@@ -1,0 +1,4 @@
+man
+chair
+hand
+desk
