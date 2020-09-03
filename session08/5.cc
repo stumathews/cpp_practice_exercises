@@ -13,6 +13,7 @@ class String {
 
 public:
 	String(const char *s) : len(strlen(s)), chars(nullptr), current_len(len) {
+		cout << "constructor called" << endl;
                 chars = new char[len]; // len always has a valid value here.
 		for (int i = 0; i < len; i++)
 			chars[i] = s[i];
@@ -22,7 +23,9 @@ public:
 	String() : len(0), chars(new char[0]) {}
 
 	// destructor
-	virtual ~String() { delete[] chars; }
+	virtual ~String() { 
+		cout << "dtor for string object with contents:" << *chars << endl;
+		delete[] chars; }
 
 	// copy constructor
 	String(const String &s) : len(s.len), chars(new char[s.len]) {
@@ -42,6 +45,8 @@ public:
 				cout << "Need bigger array. Current size=" << length() << " reallocating. New length:" << s.len << endl;
 				delete[] chars;
 				chars = new char[s.len];
+			} else {
+				cout << "reusing existing array" << endl;
 			}
 			len = s.len;
 			for (int i = 0; i < len; i++)
@@ -78,33 +83,17 @@ ostream &operator<< ( ostream &o, const String &s ) {
 
 int main(int argc, char *argv[]) {
 	String s1;
-	cout << "construct s2 from s1 - copy constructor. s1 length is " << s1.length() << endl;
-	String s2 = s1;
-	cout << "length of s2 is " << s2.length() << endl;
-	cout << "construct new s3..." << endl;;
-	String s3 = "fred";
-	cout << "s3 is initialized to '"<< s3 <<"' and length:" << s3.length() << endl;
-	cout << "assigning s3 to s2" << endl;
-	s2 = s3;
-	cout << "assigning s2 to s2" << endl;
-	s2 = s2;	// nothing happens
 
-	cout << "s1:";
-	s1.print();
-	cout << endl;
-	cout << "s2:";
-	s2.print();
-	cout << endl;
-	cout << "s3:";
-	s3.print();
-	cout << endl;
+	s1 = String("wheel");
 
-	cout << "assigning single char s3" << endl;
-	s3 = "a";
-	cout << "s3 length is :" << s3.length() << " content: " << s3 << endl;
-	cout << "assignign bigger than array to s3" << endl;
-	s3 = "Absolutely long";
-	cout << "s3 length is :" << s3.length() << " content: " << s3 << endl;
+	cout << s1 << endl;
+	/*
+	  A String object is constructed using a paramaterised constructor where the single parameter is of type char* (constructor called)
+	  The resulting temporary object(space on the stack) is then assigned through S1's assignment operator to the variable s1, also of the same type
+	  s1's assignment operator creates a new space in memory for the contents of the temporary's array contents, copies the content of the temporary objects underlying array to the newly allocated corresponding location(its own array) in the s1 object, element for element. It does not allocate a new space if the existing space is big enough to hold the incomming array. 
+	temporary object's destructor is called.
+	s1' destructor is called
+	 * */
 
 	return 0;
 }
