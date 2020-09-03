@@ -32,10 +32,10 @@ public:
 	Animal(): Being() {}
 	Animal(string name) : Being(name) {}
 	virtual void wave() const override {
-		cout << "The animal makes an apparent waving gesture..." << endl;
+		cout << "The animal("<< GetIdentifier() <<") makes an apparent waving gesture..." << endl;
 	}
 	virtual void jump() const override {
-		cout << "The animal lifts itself up and puts itself down again...it jumped." << endl;
+		cout << "The animal("<< GetIdentifier() <<") lifts itself up and puts itself down again...it jumped." << endl;
 	}
 };
 
@@ -53,5 +53,17 @@ int main(int argc, char **argv)
 	fox.jump();
 	fox.wave();
 
+	// using interfaces or base class pointers/references
+	
+	cout << "Now using base pointers/references..." << endl;
+	cout << "Stuart:" << endl;	
+	Being &interface = Stuart;
+	interface.jump();
+	interface.wave();
+
+	cout << "fox:" << endl;	
+	Being &interface1 = fox;
+	interface1.jump();
+	interface1.wave();
 	return 0;
 }
