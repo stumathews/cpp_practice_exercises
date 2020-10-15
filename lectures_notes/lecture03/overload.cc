@@ -21,6 +21,7 @@ int main(int argc, char **argv)
 	cout << "is jenny == bruce?:" << (jenny == bruce) << endl;
 	cout << "Hello World" << endl;
 	cout << (stuart << jenny);
+	cout << (stuart.operator<<(jenny)) << endl;
 
 	string s;
 	string &ref = s;
@@ -32,5 +33,12 @@ int main(int argc, char **argv)
 	cout << "reading jenny input and putting it into variable s..." << endl;
 	jenny >> ref;
 	cout << "s=" << s << endl;
+
+	// overload += for person
+	int age1 = stuart.get_age();
+	stuart += 4;
+	cout << "before stuart+=4 age is " << age1 << " and after it is " << stuart.get_age() << endl;
+	
+
 	return 0;
 }
