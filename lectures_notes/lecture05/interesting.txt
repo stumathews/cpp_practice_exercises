@@ -1,0 +1,2 @@
+declaring a reference variable does not allocate any memory
+declaring a pointer variable does allocate a memory location to hold that memory
