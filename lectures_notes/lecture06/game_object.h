@@ -17,8 +17,9 @@ class game_object
 	// Interesting note: You can have pointers to abstract class
 	// in much the same way as you can use a interface in c#
 	// c++ abstract class = c# interface
-	virtual string get_log_prefix() = 0;
+	virtual string get_log_prefix() = 0; // actually setting the method name (which is a pointer) to be null
 	virtual string log();
+	virtual void do_physics();
 };
 
 #endif

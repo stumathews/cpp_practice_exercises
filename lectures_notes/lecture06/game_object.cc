@@ -16,3 +16,7 @@ string game_object::log()
 {
 	return "game_object's log()";
 }
+void game_object::do_physics()
+{
+	cout << "Doing physics..." << endl;
+}

@@ -11,7 +11,24 @@ class ball : public game_object
 	ball();
 	string get_log_prefix() override;
 	string log() override;
+	void do_physics() final;
+	~ball();
+	ball(ball *ptr);
 };
+
+ball::ball(ball *ptr) : game_object("dude", 12)
+{
+
+}
+
+ball::~ball()
+{
+	cout << "destroying ball" << endl;
+}
+void ball::do_physics()
+{
+	cout << "Ball is doing its own physics" << endl;
+}
 
 string ball::log()
 {
